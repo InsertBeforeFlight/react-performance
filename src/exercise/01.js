@@ -11,7 +11,6 @@ function App() {
   const [showGlobe, setShowGlobe] = React.useState(false)
 
   return (
-    <React.Suspense fallback={<p>Oh dear!</p>}>
       <div
         style={{
           display: 'flex',
@@ -31,11 +30,12 @@ function App() {
           />
           Show Globe
         </label>
-        <div style={{width: 400, height: 400}}>
-          {showGlobe ? <Globe /> : null}
-        </div>
+        <React.Suspense fallback={<p>Oh dear!</p>}>
+          <div style={{width: 400, height: 400}}>
+            {showGlobe ? <Globe /> : null}
+          </div>
+        </React.Suspense>
       </div>
-    </React.Suspense>
   )
 }
 
