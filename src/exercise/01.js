@@ -3,15 +3,13 @@
 
 import * as React from 'react'
 
-const Globe = React.lazy(() => import("../globe"));
+const loadGlobe = () => import('../globe');
+
+const Globe = React.lazy(loadGlobe);
 
 function App() {
   const [showGlobe, setShowGlobe] = React.useState(false)
 
-  // 🐨 wrap the code below in a <React.Suspense /> component
-  // with a fallback.
-  // 💰 try putting it in a few different places and observe how that
-  // impacts the user experience.
   return (
     <React.Suspense fallback={<p>Oh dear!</p>}>
       <div
@@ -24,7 +22,7 @@ function App() {
           padding: '2rem',
         }}
       >
-        <label style={{marginBottom: '1rem'}}>
+        <label style={{marginBottom: '1rem'}} onMouseOver={loadGlobe} onFocus={loadGlobe}>
           <input
             type="checkbox"
             checked={showGlobe}
