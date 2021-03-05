@@ -3,7 +3,7 @@
 
 import * as React from 'react'
 
-const loadGlobe = () => import('../globe');
+const loadGlobe = () => import(/* webpackPrefetch: true */ '../globe');
 
 const Globe = React.lazy(loadGlobe);
 
@@ -25,6 +25,7 @@ function App() {
         <label style={{marginBottom: '1rem'}} onMouseOver={loadGlobe} onFocus={loadGlobe}>
           <input
             type="checkbox"
+
             checked={showGlobe}
             onChange={e => setShowGlobe(e.target.checked)}
           />
